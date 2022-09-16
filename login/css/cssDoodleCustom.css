@@ -1,0 +1,357 @@
+.playground {
+    position: absolute;
+    display: block;
+    top:0;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: none;
+    background-color: #3f51b5;
+}
+.playground.op15{opacity: .15;}
+.playground.op25{opacity: .25;}
+.playground.op50{opacity: .5;}
+.playground.op75{opacity: .75;}
+.playground.op100{opacity: 1;}
+css-doodle {
+    /* margin: auto; */
+    --rule-blocks: (
+        @grid: 15 / 100%;	
+        @random {
+        border-left: 1px solid #5d81bc;
+        }
+        @random {
+        border-top: 1px solid #5d81bc;
+        }
+        @random(.30) {
+        background: linear-gradient(
+            @p(#fff, tan, #5d81bc), @lp
+        )
+        50% / @r(60%) @lr
+        no-repeat;
+        }
+        @random {
+        filter: drop-shadow(0 0 10px #fff);
+        }
+    );
+}
+
+css-doodle {
+    --color: #e69539,#F1FAEE,#A8DADC,#457B9D,#1D3557;
+    --pos: @p(0 0, 0 100%, 100% 0, 100% 100%);
+    --size: calc(@r(100%) / @N * @n) calc(@r(100%) / @N * @n);
+    --rule-abstract: (
+        :doodle {
+        @grid: 1x20 / 100vw 100vh;
+        grid-template: auto / repeat(auto-fill, @r(2vmax));
+        grid-auto-rows: @lr;
+        grid-auto-flow: dense;
+        grid-gap: 1vmax;
+        overflow: hidden;
+        background: @p(var(--color));
+        }
+
+        :container {
+        @size: 105%;
+        }
+
+        --pos1: var(--pos);
+        --pos2: var(--pos);
+
+        grid-column-end: span @ri(12);
+        grid-row-end: span @ri(18);
+
+        background:
+        radial-gradient(
+            circle at var(--pos),
+            @stripe(transparent, @p(var(--color)) 1px, transparent)
+        )
+        @var(--pos1) / @r(100%) @lr
+        no-repeat,
+
+        @m(@r8, (
+            linear-gradient(@p(var(--color)), @lp)
+            @var(--pos1) / var(--size)
+            no-repeat
+        )),
+        radial-gradient(
+            circle at var(--pos),
+            @p(var(--color)) @r(70%), #0000 0)
+            @r(100%) @r(100%) / @r(20vmax, 50vmax) @lr
+            @p(round, space),
+        linear-gradient(
+            @r(360deg),
+            @p(var(--color)) @r(20%), #0000 0)
+            @r(100%) @r(100%) / @r(5px, 10px) @lr
+            @p(round, space);
+
+        :after, :before {
+        content: '';
+        @size: @r(100%);
+        background:
+            @m(@r2, (
+            linear-gradient(@p(var(--color)), @lp)
+            @var(--pos2) / var(--size)
+            no-repeat
+            )),
+            radial-gradient(
+            circle at var(--pos),
+            @p(var(--color)) @r(70%), #0000 0)
+            @r(100%) @r(100%) / @r(5vmax, 25vmax) @lr
+            @p(round, space),
+            linear-gradient(
+            @r(360deg),
+            @p(var(--color)) @r(20%), #0000 0)
+            @r(100%) @r(100%) / @r(2px, 5px) @lr
+            @p(round, space);
+        }
+    );
+    
+    /* Hex dots */
+    --rule-hexdots: (
+        :doodle {
+            @grid: 12x8 / 100vw 100vh;
+            grid-gap: 15px;
+        }
+            
+        transition: all .4s ease;		
+        border-top: 1px solid hsl(@rand(137.50deg, 360deg), 80%, 80%);
+        border-right: 1px solid hsl(@rand(137.50deg, 360deg), 80%, 80%);
+    
+        :after {
+            content: \@hex(@rand(9632, 9687));
+            color: hsl(@rand(137.50deg, 360deg), 80%, 80%);
+            font-size: 150%;
+        }
+        
+        @random {
+            border-top: 1px solid transparent;
+            border-right: 1px solid transparent;
+            border-bottom: 1px solid hsl(@rand(137.50deg, 360deg), 80%, 80%);
+            border-left: 1px solid hsl(@rand(137.50deg, 360deg), 80%, 80%);
+            border-style: dashed;
+        }
+    );
+
+    
+    
+    /* Rule float */
+    --color-float: @p(#51eaea, #fffde1, #ff9d76, #FB3569);
+    --rule-float: (
+      :doodle {
+        @grid: 30x1 / 18vmin;
+        --deg: @p(-180deg, 180deg);
+      }
+      :container {
+        perspective: 30vmin;
+      }
+      :after, :before {
+        content: '';
+        background: var(--color-float); 
+        @place-cell: @r(100%) @r(100%);
+        @size: @r(6px);
+        @shape: infinity;
+      }
+    
+      @place-cell: center;
+      @size: 100%;
+    
+      box-shadow: @m2(0 0 50px var(--color-float));
+      background: @m100(
+        radial-gradient(var(--color-float) 50%, transparent 0) 
+        @r(-20%, 120%) @r(-20%, 100%) / 1px 1px
+        no-repeat
+      );
+    
+      will-change: transform, opacity;
+      animation: scale-up 30s linear infinite;
+      animation-delay: calc(-30s / @I * @i);
+
+      @keyframes scale-up {
+        0%, 95.01%, 100% {
+          transform: translateZ(0) rotate(0);
+          opacity: 0;
+        }
+        10% { 
+          opacity: 1; 
+        }
+        95% {
+          transform: 
+            translateZ(35vmin) rotateZ(@var(--deg));
+        }
+      }
+    );
+
+    /* Star rule */
+    --rule-stars:( 
+        :doodle {
+            @grid: 10 x 10 / 100vmax 100vmax;
+            grid-gap: 20px;
+            z-index: 3;
+        }
+
+        @size: 1.6em;
+        @size: @r(5px, 30px);
+        @shape: hypocycloid 4;
+        animation: blink linear @r(5s, 10s) @r(-0.1s, -1s) infinite;
+        
+        @nth(1) {
+            transform: scale(@r(.1, .9));
+            @place-cell: 50px 80px;
+            background-color: #ffb300;
+        }
+        @nth(2) {
+            transform: scale(@r(.2, .6));
+            @place-cell: 380px 40px;
+            background-color: #ffb300;
+        }
+        @nth(3) {
+            transform: scale(@r(.5, .9));
+            @place-cell: 400px 50px;
+            background-color: #ffb300;
+        }
+        @nth(4) {
+            transform: scale(@r(.1, .4));
+            @place-cell: 410px 35px;
+            background-color: #ffb300;
+        }
+        @nth(5) {
+            transform: scale(@r(.1, .4));
+            @place-cell: 85px 200px;
+            background-color: #ffb300;
+        }
+        @nth(6) {
+            transform: scale(@r(.1, .4));
+            @place-cell: 470px 370px;
+            background-color: #ffb300;
+        }
+        @nth(7) {
+            transform: scale(@r(.1, .2));
+            @place-cell: 440px 350px;
+            background-color: #ffb300;
+        }
+
+        @keyframes blink {
+            0%, 40%, 100% {
+                transform: scale(@r(.4, .8));
+            }
+
+            20% {
+                transform: scale(@r(.1, .4));
+                ;
+            }
+            80% {
+                transform: scale(@r(.9, 2));
+                ;
+            }
+        }
+    );
+
+    --rule-spells:( 
+        :doodle {
+            @grid: 45 x 25 / 100vw 100vh;
+            box-sizing: border-box;
+            grid-gap: 1px;
+            z-index: 3;
+        }
+        :after {
+            content: \@hex(@rand(0, 500));
+            transform: scale(@r(.1, .9)) translateY(@r(1px, 3px));
+            color: #ffffff;
+            opacity: @r(0, 1);
+            animation: move ease-in-out @r(5s, 10s) @r(-0.1s, -1s) infinite;
+        }
+        @keyframes move {
+            0%, 40%, 100% {
+                transform: scale(@r(.1, .9)) translateY(@r(1px, 3px));
+            }
+            20% {
+                transform: scale(@r(.1, .3)) translateY(@r(3px, 6px));
+                ;
+            }
+            80% {
+                transform: scale(@r(.7, .9)) translateY(@r(-2px,
+                1px));
+                ;
+            }
+        }
+    );
+}
+
+css-doodle {
+    --color-abs: @p(#E63946, #F1FAEE, #A8DADC, #457B9D, #1D3557);
+    --position-abs: @r(0%, 100%) @r(0%, 100%);
+
+    --pat-1: (
+      linear-gradient(var(--color-abs), @lp)
+      var(--position-abs) / @r(1px) @r(15%)
+    );
+    
+    --pat-2: (
+      linear-gradient(@p(
+        -180deg, -135deg, -90deg, -45deg,
+        0deg, 45deg, 90deg, 135deg, 180deg 
+      ),
+      var(--color-abs) 50%, transparent 0)
+      var(--position-abs) / @r(3%) @lr
+    );
+
+    --pat-3: (
+      linear-gradient(var(--color-abs), @lp)
+      var(--position-abs) / @r(15%) 1px
+    );
+
+    --pat-4: (
+      radial-gradient(var(--color-abs), @lp)
+      var(--position-abs) / @r(40px) @lr
+    );
+
+    --pat-5: (
+      radial-gradient(var(--color-abs) 50%, transparent 0)
+      var(--position-abs) / @r(40px) @lr()
+    );
+
+    --pat-6: (
+      conic-gradient(
+        from calc(145deg + @ri(4) * 90deg), 
+        var(--color-abs) 0,
+        @lp 20%,
+        transparent 20%,
+        transparent 50%
+      )
+      var(--position-abs) / @r(5%) @lr
+    );
+
+    --pat-7: (
+      linear-gradient(
+        @p(±45deg),
+        @stripe(
+          transparent, 
+          var(--color-abs) 1px, 
+          transparent 
+        )
+      )
+      var(--position-abs) / @r(5%) @lr
+    );
+
+    --rule-abs: (
+      :doodle {
+        @grid: 1 / 100vw 100vh; 
+        background-color: transparent;
+      }
+      background:
+        @m80(var(--pat-1)),
+        @m80(var(--pat-2)),
+        @m80(var(--pat-3)),
+        @m80(var(--pat-4)),
+        @m80(var(--pat-5)),
+        @m80(var(--pat-6)),
+        @m80(var(--pat-7));
+      background-repeat: no-repeat; 
+      background-blend-mode: color-burn;
+    );
+
+    /* Anime grids */
+    --rule-gridanim:(
+        
+    );
+}

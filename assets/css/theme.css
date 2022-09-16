@@ -1,0 +1,13 @@
+:root {
+
+  /* Primary colors */
+
+  /* Layouts */
+  --header-height:55px;
+
+  /*Primary c*/
+  --primary-color: #153d77; /*Dark Cerulean*/
+  --primary-rgb: 21 61 119; /*Dark Cerulean*/
+  --body-background: #f3f4f7; 
+
+}

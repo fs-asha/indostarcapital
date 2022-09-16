@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Login</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="login/img/favicon.ico">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="login/css/bootstrap.min.css">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="login/css/fontawesome-all.min.css">
+	<!-- Google Web Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="login/css/style.css">
+	<link rel="stylesheet" href="login/css/cssDoodleCustom.css">
+</head>
+
+<body>
+	<!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="preloader" class="preloader">
+        <div class='inner'>
+            <div class='line1'></div>
+            <div class='line2'></div>
+            <div class='line3'></div>
+        </div>
+    </div>
+	
+	<section class="fxt-template-animation fxt-template-layout9" data-bg-image="login/img/bg9-l.jpg">
+		<div class="playground op15">
+			<!-- use="var(--rule-gridanim)" -->
+			<css-doodle  click-to-update>
+				@grid: 15 / 100%;   
+				@random {
+				border-left: 1px solid #5d81bc;
+				}
+				@random {
+				border-top: 1px solid #5d81bc;
+				}
+				@random(.30) {
+				background: linear-gradient(
+					@p(#ffe2cb, tan, #fdad6b), @lp
+				)
+				50% / @r(60%) @lr
+				no-repeat;
+				}
+				@random {
+				filter: drop-shadow(0 0 10px #fff);
+				}
+			</css-doodle>			
+		</div>
+		<div class="container">
+			<div class="row align-items-center justify-content-center">
+				<div class="col-lg-3">
+					<div class="fxt-header">
+						<a href="index.html" class="fxt-logo"><img src="login/img/FS-AI-k.svg" alt="FS Logo"></a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="fxt-content">
+						<h2>Login into your account</h2>
+						<div class="fxt-form">
+							<!-- Removed method="post" -->
+							<form>
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-1">
+										<input type="email" id="email" class="form-control" name="email" placeholder="Email" required="required">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-2">
+										<input id="password" type="password" class="form-control" name="password" placeholder="********" required="required">
+										<i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+									</div>
+								</div>
+								<!-- <div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-3">
+										<div class="fxt-checkbox-area">
+											<div class="checkbox">
+												<input id="checkbox1" type="checkbox">
+												<label for="checkbox1">Remember me</label>
+											</div>
+											<a href="forgot-password.html" class="switcher-text">Forgot Password</a>
+										</div>
+									</div>
+								</div> -->
+								<div class="form-group mt-4">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+										<button type="button" id="btnLogin" class="fxt-btn-fill">Log in</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- jquery-->
+	<script src="login/js/jquery-3.5.0.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="login/js/bootstrap.min.js"></script>
+	<!-- Imagesloaded js -->
+	<script src="login/js/imagesloaded.pkgd.min.js"></script>
+	<!-- Validator js -->
+	<script src="login/js/validator.min.js"></script>
+	<!-- css-doodle -->
+	<script src="https://unpkg.com/css-doodle@0.24.2/css-doodle.min.js"></script>
+	<!-- Custom Js -->
+	<script src="login/js/main.js"></script>
+	<script>
+		$('#btnLogin').click(function(){
+			window.location.href="dashboard.html";
+		});
+	</script>
+
+</body>
+</html>
