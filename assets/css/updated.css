@@ -308,3 +308,5 @@ img.img-property{
 .progress-bar { line-height: 25px; }
 .bg-amber{background-color: #FB8C00 !important;}
 .progress-label {float: left;margin-right: em;font-size: 14px;padding: 0 8px 0 5px;line-height: 26px;font-weight: 600;background: #ffffff;}
+.slick-dotted.slick-slider{margin-bottom: 0px;}
+.slick-dots{bottom: 10px;}
